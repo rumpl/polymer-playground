@@ -1,0 +1,21 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<polymer-element name="todo-list" attributes="items">
+  <template>
+    <link rel="stylesheet" href="todo-list.css">
+    <ul>
+      <template repeat="{{ item in items }}">
+        <li is="todo-item" item="{{ item }}"></li>
+      </template>
+    </template>
+  </ul>
+  <script>
+    (function () {
+
+      Polymer({
+        // define element prototype here
+      });
+
+    })();
+  </script>
+</polymer-element>
