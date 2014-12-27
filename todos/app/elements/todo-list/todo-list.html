@@ -2,22 +2,40 @@
 <link rel="import" href="../todo-item/todo-item.html">
 <link rel="import" href="../todo-input/todo-input.html">
 
-
-<polymer-element name="todo-list" attributes="items">
+<polymer-element name="todo-list" attributes="items storageId">
     <template>
         <todo-input on-todo-input-commit="{{addTodo}}" label="New Todo"></todo-input>
         <link rel="stylesheet" href="todo-list.css">
         <template repeat="{{ item in items }}">
-            <todo-item item="{{ item }}"></todo-item>
+            <todo-item item="{{ item }}" on-todo-item-checked="{{toggleChecked}}"></todo-item>
         </template>
     </template>
     <script>
         (function () {
             Polymer({
                 items: [],
-                addTodo: function (e, detail, sender) {
-                    this.items.push({title : detail});
-                    console.log(arguments);
+                ready: function () {
+                    this.asyncMethod(function () {
+                        this.items = this.storage.value || [];
+                    });
+                },
+                addTodo: function (e, detail) {
+                    this.items.push({title: detail, done: true});
+                },
+                itemsChanged: function () {
+                    if (this.storage) {
+                        this.storage.value = this.items;
+                        this.storage.save();
+                    }
+                },
+                storageIdChanged: function () {
+                    this.storage = document.querySelector('#' + this.storageId);
+                    if (this.storage) {
+                        this.items = this.storage.value;
+                    }
+                },
+                toggleChecked: function () {
+                    this.itemsChanged();
                 }
             });
         })();

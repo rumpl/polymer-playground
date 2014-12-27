@@ -14,20 +14,24 @@
 
     <!-- build:js bower_components/webcomponentsjs/webcomponents.min.js -->
     <script src="bower_components/webcomponentsjs/webcomponents.js"></script>
+
     <!-- endbuild -->
 
     <!-- build:vulcanized elements/elements.vulcanized.html -->
+    <!--<link rel="import" href="bower_components/core-localstorage">-->
     <link rel="import" href="bower_components/paper-input/paper-input.html">
+    <link rel="import" href="bower_components/paper-toggle-button/paper-toggle-button.html">
+    <link rel="import" href="bower_components/core-localstorage/core-localstorage.html">
     <link rel="import" href="elements/todo-item/todo-item.html">
     <link rel="import" href="elements/todo-list/todo-list.html">
     <link rel="import" href="elements/todo-input/todo-input.html">
-
     <!-- endbuild-->
 </head>
 
-<body unresolved>
+<body unresolved >
 <div class="hero-unit">
-    <todo-list></todo-list>
+    <core-localstorage id="todo-storage" name="todo-storage"></core-localstorage>
+    <todo-list storageId="todo-storage"></todo-list>
 </div>
 <!-- build:js scripts/app.js -->
 <script src="scripts/app.js"></script>

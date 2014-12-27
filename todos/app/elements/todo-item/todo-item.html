@@ -5,17 +5,21 @@
 <polymer-element name="todo-item" attributes="item">
     <template>
         <link rel="stylesheet" href="todo-item.css">
-        <paper-item>
-            {{ item.title }}
-        </paper-item>
+        <div horizontal layout>
+            <paper-item disabled?="{{ item.done }}" flex center-justified>
+                {{ item.title }}
+            </paper-item>
+            <paper-toggle-button checked?="{{ item.done }}" align-center on-change="{{toggleChange}}"></paper-toggle-button>
+        </div>
     </template>
     <script>
         (function () {
-
             Polymer({
-                // define element prototype here
+                toggleChange: function (e, data, sender) {
+                    this.item.done = sender.checked;
+                    this.fire('todo-item-checked');
+                }
             });
-
         })();
     </script>
 </polymer-element>

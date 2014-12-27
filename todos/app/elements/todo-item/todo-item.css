@@ -1,3 +1,7 @@
 :host {
   /*display: block;*/
 }
+
+paper-toggle-button {
+    margin-top: 20px;
+}
