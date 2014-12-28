@@ -9,6 +9,7 @@
         <template repeat="{{ item in items }}">
             <todo-item item="{{ item }}" on-todo-item-checked="{{ toggleChecked }}" on-todo-item-delete="{{ deleteTodo }}"></todo-item>
         </template>
+        <span>{{ itemsLeft }} items left</span>
     </template>
     <script>
         (function () {
@@ -17,6 +18,7 @@
                 ready: function () {
                     this.asyncMethod(function () {
                         this.items = this.storage.value || [];
+                        this.refreshItemsLeft();
                     });
                 },
                 addTodo: function (e, detail) {
@@ -43,6 +45,12 @@
                         this.storage.value = this.items;
                         this.storage.save();
                     }
+                    this.refreshItemsLeft();
+                },
+                refreshItemsLeft: function () {
+                    this.itemsLeft = this.items.reduce(function (acc, value) {
+                       return acc + (value.done ? 0 : 1);
+                    }, 0);
                 },
                 storageIdChanged: function () {
                     this.storage = document.querySelector('#' + this.storageId);
