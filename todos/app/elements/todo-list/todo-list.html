@@ -4,7 +4,7 @@
 
 <polymer-element name="todo-list" attributes="items storageId">
     <template>
-        <todo-input on-todo-input-commit="{{ addTodo }}" label="New Todo"></todo-input>
+        <todo-input on-todo-input-commit="{{ addTodo }}" label="New Todo" floatinglabel></todo-input>
         <link rel="stylesheet" href="todo-list.css">
         <template repeat="{{ item in items }}">
             <todo-item item="{{ item }}" on-todo-item-checked="{{ toggleChecked }}" on-todo-item-delete="{{ deleteTodo }}"></todo-item>
@@ -21,6 +21,7 @@
                 },
                 addTodo: function (e, detail) {
                     this.items.push({title: detail, done: false});
+
                 },
                 deleteTodo: function (e, detail, obj) {
                     var idxToDelete = -1;

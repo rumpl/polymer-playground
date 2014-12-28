@@ -5,13 +5,13 @@
 <polymer-element name="todo-item" attributes="item">
     <template>
         <link rel="stylesheet" href="todo-item.css">
-        <div horizontal layout>
+        <paper-shadow class="card" z="1" horizontal layout>
             <paper-item disabled?="{{ item.done }}" flex center-justified>
                 {{ item.title }}
             </paper-item>
             <paper-toggle-button checked?="{{ item.done }}" align-center on-change="{{ toggleChange }}"></paper-toggle-button>
             <core-icon icon="icons:delete" on-click="{{ deleteAction }}"></core-icon>
-        </div>
+        </paper-shadow>
     </template>
     <script>
         (function () {

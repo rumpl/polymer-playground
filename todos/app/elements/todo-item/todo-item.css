@@ -2,7 +2,7 @@
 }
 
 paper-toggle-button {
-    margin-top: 20px;
+    margin-top: 19px;
 }
 
 core-icon {
@@ -13,4 +13,9 @@ core-icon {
 
 core-icon:hover {
     fill: #fb8c00;
+}
+
+.card {
+    margin: 10px;
+    padding-right: 15px;
 }
