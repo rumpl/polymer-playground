@@ -7,7 +7,7 @@
         <todo-input on-todo-input-commit="{{addTodo}}" label="New Todo"></todo-input>
         <link rel="stylesheet" href="todo-list.css">
         <template repeat="{{ item in items }}">
-            <todo-item item="{{ item }}" on-todo-item-checked="{{toggleChecked}}"></todo-item>
+            <todo-item item="{{ item }}" on-todo-item-checked="{{toggleChecked}}" on-todo-item-delete="{{deleteTodo}}"></todo-item>
         </template>
     </template>
     <script>
@@ -20,7 +20,17 @@
                     });
                 },
                 addTodo: function (e, detail) {
-                    this.items.push({title: detail, done: true});
+                    this.items.push({title: detail, done: false});
+                },
+                deleteTodo: function (e, detail, obj) {
+                    for (var i = 0; i < this.items.length; i++) {
+                        var item = this.items[i];
+                        if (item === detail) {
+                            this.items.splice(i, 1);
+                            this.itemsChanged();
+                            return;
+                        }
+                    }
                 },
                 itemsChanged: function () {
                     if (this.storage) {

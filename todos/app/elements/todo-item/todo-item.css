@@ -1,7 +1,17 @@
 :host {
-  /*display: block;*/
+    /*display: block;*/
 }
 
 paper-toggle-button {
     margin-top: 20px;
+}
+
+core-icon {
+    transition: all 0.2s;
+    -webkit-transition: all 0.2s;
+    margin-top: 15px;
+}
+
+core-icon:hover {
+    fill: #fb8c00;
 }

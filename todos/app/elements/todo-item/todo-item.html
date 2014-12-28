@@ -10,11 +10,15 @@
                 {{ item.title }}
             </paper-item>
             <paper-toggle-button checked?="{{ item.done }}" align-center on-change="{{toggleChange}}"></paper-toggle-button>
+            <core-icon icon="icons:delete" on-click="{{deleteAction}}"></core-icon>
         </div>
     </template>
     <script>
         (function () {
             Polymer({
+                deleteAction: function () {
+                    this.fire('todo-item-delete', this.item);
+                },
                 toggleChange: function (e, data, sender) {
                     this.item.done = sender.checked;
                     this.fire('todo-item-checked');
