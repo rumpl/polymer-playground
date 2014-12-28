@@ -4,10 +4,10 @@
 
 <polymer-element name="todo-list" attributes="items storageId">
     <template>
-        <todo-input on-todo-input-commit="{{addTodo}}" label="New Todo"></todo-input>
+        <todo-input on-todo-input-commit="{{ addTodo }}" label="New Todo"></todo-input>
         <link rel="stylesheet" href="todo-list.css">
         <template repeat="{{ item in items }}">
-            <todo-item item="{{ item }}" on-todo-item-checked="{{toggleChecked}}" on-todo-item-delete="{{deleteTodo}}"></todo-item>
+            <todo-item item="{{ item }}" on-todo-item-checked="{{ toggleChecked }}" on-todo-item-delete="{{ deleteTodo }}"></todo-item>
         </template>
     </template>
     <script>

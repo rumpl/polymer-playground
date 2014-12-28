@@ -9,8 +9,8 @@
             <paper-item disabled?="{{ item.done }}" flex center-justified>
                 {{ item.title }}
             </paper-item>
-            <paper-toggle-button checked?="{{ item.done }}" align-center on-change="{{toggleChange}}"></paper-toggle-button>
-            <core-icon icon="icons:delete" on-click="{{deleteAction}}"></core-icon>
+            <paper-toggle-button checked?="{{ item.done }}" align-center on-change="{{ toggleChange }}"></paper-toggle-button>
+            <core-icon icon="icons:delete" on-click="{{ deleteAction }}"></core-icon>
         </div>
     </template>
     <script>
